@@ -1,7 +1,7 @@
-pkgbase = linux-mainline
-	pkgver = 4.19rc8
+pkgbase = linux-amezin
+	pkgver = 4.19.rc8.r1259.g32f705542c5b
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v
+	url = https://github.com/amezin/linux
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,7 +13,7 @@ pkgbase = linux-mainline
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.19-rc8
+	source = linux-amezin::git+https://github.com/amezin/linux.git
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -27,19 +27,19 @@ pkgbase = linux-mainline
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
-pkgname = linux-mainline
-	pkgdesc = The Linux-mainline kernel and modules
+pkgname = linux-amezin
+	pkgdesc = The Linux-amezin kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-mainline.preset
+	backup = etc/mkinitcpio.d/linux-amezin.preset
 
-pkgname = linux-mainline-headers
-	pkgdesc = Header files and scripts for building modules for Linux-mainline kernel
+pkgname = linux-amezin-headers
+	pkgdesc = Header files and scripts for building modules for Linux-amezin kernel
 
-pkgname = linux-mainline-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-mainline kernel
+pkgname = linux-amezin-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-amezin kernel
 

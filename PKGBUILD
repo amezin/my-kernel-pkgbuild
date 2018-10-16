@@ -1,23 +1,21 @@
 #
+# Based on the linux-mainline package by:
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
-#
-# Based on the linux package by:
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-mainline               # Build stock -ARCH kernel
+pkgbase=linux-amezin               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v4.19-rc8
-pkgver=4.19rc8
+pkgver=4.19.rc8.r1259.g32f705542c5b
 pkgrel=1
 arch=(x86_64)
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+url="https://github.com/amezin/linux"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
-_srcname=linux-mainline
+_srcname=${pkgbase}
 source=(
-  "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
+  "$_srcname::git+https://github.com/amezin/linux.git"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -36,6 +34,12 @@ sha256sums=('SKIP'
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
+
+pkgver() {
+  cd $_srcname
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd $_srcname
